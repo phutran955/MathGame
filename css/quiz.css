@@ -1,0 +1,624 @@
+/* =========================
+   QUIZ SCENE
+========================= */
+.quiz-scene {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  height: 720px;
+  width: 1720px;
+}
+
+/* =========================
+   QUIZ ZONE LAYOUT
+========================= */
+.quiz-zone {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px 120px;
+  min-height: 0;
+}
+
+/* =========================
+   MASCOT - CỐ ĐỊNH Ở ĐÁY
+========================= */
+.mascot-area {
+  position: absolute;
+  bottom: 20px;
+  width: 220px;
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 25;
+}
+
+.mascot-area.player {
+  left: 120px;
+  bottom: 20px;
+}
+
+
+/* =========================
+   MASCOT CHAT - 2 BUBBLE RIÊNG BIỆT NHƯ TRONG HÌNH
+========================= */
+
+/* Container cho chat bubble */
+.mascot-chat {
+  position: absolute;
+  bottom: 160px;
+  /* trên đầu mascot */
+  left: 80px;
+  max-width: 260px;
+  z-index: 10;
+}
+
+.mascot-chat .popup {
+  background: #fff;
+  border-radius: 16px;
+  padding: 12px 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  font-size: 14px;
+  animation: popIn 0.3s ease;
+}
+
+/* mỏ chat */
+.mascot-chat .popup::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 24px;
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: #fff transparent transparent;
+}
+
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================
+   QUIZ PANEL (QUESTION + ANSWERS)
+========================= */
+.quiz-panel {
+  position: relative;
+  z-index: 20;
+  flex: 1;
+  max-width: 520px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  padding: 24px;
+  border-radius: 24px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+  transform: none !important;
+}
+
+/* question */
+.quiz-panel .quiz-question h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #fff;
+  text-shadow: 2px 2px 4px #000;
+}
+
+/* answers grid giữ nguyên */
+.quiz-panel .quiz-answers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+/* =========================
+   QUESTION
+========================= */
+.quiz-question {
+  max-height: 150px;
+  overflow-y: auto;
+  padding-right: 10px;
+  margin-bottom: 20px;
+}
+
+.quiz-question h2 {
+  margin: 0 0 15px 0;
+  font-size: 24px;
+  color: #fff;
+  text-shadow: 2px 2px 4px #000;
+  line-height: 1.4;
+}
+
+/* =========================
+   QUESTION IMAGE
+========================= */
+.question-img {
+  margin: 12px 0;
+  text-align: center;
+}
+
+.question-img img {
+  max-width: auto;
+  max-height: 220px;
+  object-fit: contain;
+  display: inline-block;
+}
+
+/* =========================
+   ANSWERS GRID
+========================= */
+.quiz-answers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 28px;
+  margin-bottom: 10px;
+}
+
+/* 🌈 Nút trả lời mặc định */
+.quiz-answers button {
+  padding: 20px 14px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 22px;
+  border: 4px solid #ffffff;
+  background: linear-gradient(135deg, #4dd0e1, #81c784);
+  color: #1f1f1f;
+  cursor: pointer;
+  box-shadow:
+    0 6px 0 #2e7d32,
+    0 10px 16px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  animation: floatIdle 2.2s ease-in-out infinite;
+}
+
+/* 🌟 Nhấp nhô nhẹ */
+@keyframes floatIdle {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* 👉 Rê chuột */
+.quiz-answers button:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow:
+    0 10px 0 #2e7d32,
+    0 14px 22px rgba(0, 0, 0, 0.25);
+}
+
+/* 👉 Khi bấm */
+.quiz-answers button:active {
+  transform: translateY(-2px) scale(0.96);
+  box-shadow:
+    0 4px 0 #2e7d32,
+    0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================
+   FILL ANSWER
+========================= */
+
+.quiz-fill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.quiz-fill .fill-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quiz-fill span {
+  font-size: 26px;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.fill-input {
+  min-width: 100px;
+  max-width: 140px;
+  height: 38px;
+  padding: 4px 10px;
+  border-radius: 10px;
+  border: 4px solid #ffffff;
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+  outline: none;
+
+  background: linear-gradient(135deg, #e3f2fd, #ffffff);
+  color: #1f1f1f;
+
+  box-shadow:
+    0 5px 0 #90caf9,
+    0 10px 16px rgba(0, 0, 0, 0.25);
+
+  transition: all 0.2s ease;
+  letter-spacing: 1px;
+}
+
+.fill-input:focus {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow:
+    0 9px 0 #64b5f6,
+    0 14px 22px rgba(0, 0, 0, 0.3);
+}
+
+/* Fill answer button */
+.fill-submit {
+  width: 100%;
+  max-width: 640px;
+  padding: 12px 0;
+
+  border-radius: 12px;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+
+  background: #6fcf97;
+  color: #0b3d1c;
+
+  box-shadow: 0 4px 0 #3fa66b;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.fill-submit:hover {
+  background: #57b87f;
+  transform: translateY(-1px);
+}
+
+.fill-submit:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 0 #3fa66b;
+}
+
+/* =========================
+   FILL ANSWER STATES
+========================= */
+
+/*  đúng */
+.fill-input.correct {
+  background: linear-gradient(135deg, #66ff99, #00c853);
+  border-color: #00c853;
+  color: #0b3d1c;
+  box-shadow: 0 0 18px #00e676;
+}
+
+/*  sai */
+.fill-input.wrong {
+  background: linear-gradient(135deg, #ff8a80, #ff5252);
+  border-color: #d50000;
+  color: #5a0000;
+  animation: wrongShake 0.4s;
+}
+
+/* hết giờ / show đáp án */
+.fill-input.timeout {
+  background: linear-gradient(135deg, #fff176, #ffd600);
+  border-color: #ffab00;
+  color: #5d4500;
+  box-shadow: 0 0 18px #ffeb3b;
+}
+
+/* =========================
+   ANSWER STATES
+========================= */
+
+/* ĐÚNG */
+.quiz-answers button.correct {
+  background: linear-gradient(135deg, #66ff99, #00c853);
+  border-color: #00c853;
+  color: #0b3d1c;
+  animation: correctPop 0.5s ease;
+}
+
+@keyframes correctPop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2) rotate(3deg);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ❌ SAI */
+.quiz-answers button.wrong {
+  background: linear-gradient(135deg, #ff8a80, #ff5252);
+  border-color: #d50000;
+  color: #5a0000;
+  animation: wrongShake 0.4s;
+}
+
+@keyframes wrongShake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-6px);
+  }
+  50% {
+    transform: translateX(6px);
+  }
+  75% {
+    transform: translateX(-6px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* 🌟 ĐÁP ÁN ĐÚNG (khi hết mạng) */
+.quiz-answers button.correct-answer {
+  background: linear-gradient(135deg, #fff176, #ffd600);
+  border-color: #ffab00;
+  color: #5d4500;
+  box-shadow: 0 0 18px #ffeb3b;
+}
+
+/* =========================
+   POPUP OVERLAY
+========================= */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+/* TOAST-MESSAGE (CHATBOX CỦA MASCOT) */
+
+.toast-message {
+  position: fixed;
+  bottom: 420px; /* trên đầu mascot */
+  left: 300px;
+  transform: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #fff;
+  color: #333;
+  font-weight: bold;
+
+  padding: 12px 24px;
+  border-radius: 20px;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  border: 3px solid;
+
+  font-size: 16px;
+  min-width: 170px; /* rộng hơn */
+  max-width: 400px; /* giới hạn chiều ngang */
+  height: auto; /* không cao quá */
+
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 3000;
+}
+
+/* hiệu ứng hiện */
+.toast-message.show {
+  opacity: 1;
+  transform: translateX(-50%) scale(3);
+}
+
+/* đúng */
+.toast-message.correct.player{
+  color: #4caf50;
+  background-color: #e8f5e9;
+}
+
+/* sai */
+.toast-message.wrong.player {
+  color: #f44336;
+  background-color: #ffebee;
+}
+
+/* mõ */
+.toast-message::after {
+  content: "";
+  position: absolute;
+
+  /* vị trí của mõ */
+  bottom: -10px;
+  left: 55px;
+
+  /* chỉnh hướng mõ của popup chat */
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 12px solid #fff;
+  border-bottom: 0;
+}
+
+.toast-message.correct.player::after {
+  border-top: 12px solid #e8f5e9;
+}
+
+.toast-message.wrong.player::after {
+  border-top: 12px solid #ffebee;
+}
+
+/* =========================
+   SETTINGS MENU
+========================= */
+.setting-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.setting-menu {
+  background: url("../assets/images/decor/menu_BG.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 120%;
+  padding: 20px;
+  padding-top: 35px;
+  border-radius: 16px;
+  width: 700px;
+  text-align: center;
+  height: 500px;
+}
+
+.setting-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px 16px;
+  margin: 10px 105px 0px;
+  width: 450px;
+}
+
+/* button chung */
+.setting-buttons button {
+  width: 140px; /* kích thước cố định */
+  height: 140px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.setting-buttons .btn-level {
+  background: url("../assets/images/decor/home-button.png") center / cover
+    no-repeat;
+}
+
+.setting-buttons .btn-replay {
+  background: url("../assets/images/decor/restart-button.png") center / cover
+    no-repeat;
+}
+
+.setting-buttons .btn-close {
+  background: url("../assets/images/decor/continue-button.png") center / cover
+    no-repeat;
+}
+
+.setting-menu button:hover {
+  opacity: 0.9;
+}
+
+.setting-group {
+  text-align: left;
+  margin: 12px 0;
+  font-weight: bold;
+  margin-top: 110px;
+  margin-left: 105px;
+  width: 450px;
+}
+
+.setting-group label {
+  display: block;
+  margin-bottom: 6px;
+  margin: 0px 130px;
+}
+
+.setting-group input[type="range"] {
+  width: 100%;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+@keyframes pop {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+.quiz-content {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== TIM ĐẬP ===== */
+.heart-beat {
+  animation: heartBeat 1s infinite;
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.quiz-panel.quiz-hide {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.9);
+  transition: 0.4s ease;
+}
+
+.door-layer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 520px;
+  height: auto;
+  z-index: 50; /* trên tất cả */
+  pointer-events: none;
+}

@@ -1,0 +1,131 @@
+
+/* =========================
+   RESULT POPUP
+========================= */
+.result-popup {
+  text-align: center;
+  padding: 24px;
+  border-radius: 20px;
+}
+
+.result-popup p {
+  font-size: 26px;
+  margin-bottom: 16px;
+  padding-top: 30px;
+}
+
+/* Mascot */
+.result-mascot {
+  display: flex;
+  justify-content: center;
+  margin: -10px 0 -5px;
+  animation: bounce 1.2s infinite;
+}
+
+.result-mascot img {
+  width: 200px;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+/* Buttons */
+.result-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 70px;
+  gap: 180px;
+}
+
+.result-buttons button {
+  width: 150px;   /* kích thước cố định */
+  height: 150px;
+  padding: 0;
+  margin-top: -150px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.result-buttons .restart {
+  background: url("../assets/images/decor/restart-button.png") center / cover
+    no-repeat;
+}
+
+.result-buttons .levels {
+  background: url("../assets/images/decor/home-button.png") center / cover
+    no-repeat;
+}
+
+.result-buttons button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.result-scene {
+  height: 100vh;
+  text-align: center;
+  padding-top: 80px;
+  background: linear-gradient(#fff7d6, #ffe29a);
+  font-family: "Baloo 2", "Fredoka", cursive;
+}
+
+/* 🎉 Tiêu đề */
+.result-popup h2 {
+  font-size: 30px;
+  margin-bottom: 8px;
+  color: #2d7c3f;
+  text-shadow:
+    2px 2px 0 #eaffc8,
+    4px 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+.result-popup .subtitle {
+  font-size: 18px;
+  opacity: 0.85;
+}
+
+.message {
+  margin-top: 50px;
+  padding-left: 10px;
+  color: #fff7d6;
+}
+
+/* ⭐ Nội dung */
+.result-scene p {
+  font-size: 22px;
+  margin-bottom: 36px;
+  color: #42cdc6;
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 18px;
+  box-shadow: 0 6px 0 #ffd966;
+}
+
+/* 👇 Hiệu ứng ấn */
+.result-buttons button:active {
+  transform: translateY(4px);
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.popup.result-popup {
+  width: 680px; /* tăng bảng */
+  max-width: 100vw;
+  padding: 48px 50px 40px;
+
+  background: url("../assets/images/decor/Result_BG_2.png") center / cover
+    no-repeat;
+}
+
+.popup.result-popup p {
+  font-weight: bold;
+}

@@ -1,0 +1,69 @@
+/* =========================
+   RESET
+========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================
+   HTML / BODY
+========================= */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  touch-action: none;
+}
+
+body {
+  font-family: "Comic Sans MS", "Arial Rounded MT Bold", Arial, sans-serif;
+  background: #000;
+  user-select: none;
+}
+
+/* =========================
+   GAME ROOT
+========================= */
+
+#app {
+  position: absolute;
+  width: 1720px;
+  height: 720px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+}
+
+/* =========================
+   ROTATE WARNING (PORTRAIT)
+========================= */
+#rotate-warning {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  color: #fff;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 9999;
+  font-size: 18px;
+  padding: 20px;
+}
+
+/* =========================
+   BLOCK MOBILE PORTRAIT
+========================= */
+@media screen and (orientation: portrait) and (max-width: 1024px) {
+
+
+  #rotate-warning {
+    display: flex;
+  }
+}
