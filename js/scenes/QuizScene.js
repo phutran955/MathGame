@@ -53,49 +53,48 @@ export default function ({
   }
 
   // ================= DOOR =================
-async function executeDoor(type) {
-  const door = div.querySelector(".door-layer");
-  if (!door) return;
+  async function executeDoor(type) {
+    const door = div.querySelector(".door-layer");
+    if (!door) return;
 
-  // 👉 nếu OPEN → đứng ở cửa đóng trước
-  if (type === "open") {
-    door.src = `/assets/mascots/door/1.png`;
+    // hold the door
+    if (type === "open") {
+      door.src = `/assets/mascots/door/1.png`;
 
-    await new Promise(r => setTimeout(r, 500)); // ⏱ delay lúc bắt đầu
-  }
+      await new Promise(r => setTimeout(r, 500)); // delay time 
+    }
 
-  let frame = type === "open" ? 1 : 10;
+    let frame = type === "open" ? 1 : 10;
 
-  return new Promise(resolve => {
-    const interval = setInterval(() => {
-      door.src = `/assets/mascots/door/${frame}.png`;
+    return new Promise(resolve => {
+      const interval = setInterval(() => {
+        door.src = `/assets/mascots/door/${frame}.png`;
 
-      frame += (type === "open" ? 1 : -1);
+        frame += (type === "open" ? 1 : -1);
 
-      // ===== OPEN =====
-      if (type === "open" && frame > 10) {
-        clearInterval(interval);
+        // ===== OPEN =====
+        if (type === "open" && frame > 10) {
+          clearInterval(interval);
 
-        door.src = `/assets/mascots/door/10.png`;
+          door.src = `/assets/mascots/door/10.png`;
 
-        resolve();
-      }
-
-      // ===== CLOSE =====
-      if (type === "close" && frame < 1) {
-        clearInterval(interval);
-
-        door.src = `/assets/mascots/door/1.png`;
-
-        // 👉 giữ cửa đóng 1 lúc
-        setTimeout(() => {
           resolve();
-        }, 500); // ⏱ delay lúc kết thúc
-      }
+        }
 
-    }, 60);
-  });
-}
+        // ===== CLOSE =====
+        if (type === "close" && frame < 1) {
+          clearInterval(interval);
+
+          door.src = `/assets/mascots/door/1.png`;
+
+          setTimeout(() => {
+            resolve();
+          }, 500); // delay
+        }
+
+      }, 60);
+    });
+  }
 
   // ================= UTIL =================
   function updateStarProgress() {
