@@ -20,7 +20,6 @@ export default function ({
   let totalQuestions = allQuestions.length;
   let currentQuestionIndex = 0;
   let settingMenu = null;
-  //let popup = null;
   let isDoorOpened = false;
   let mascotInstance = null;
   let currentBackground = null;
@@ -53,49 +52,51 @@ export default function ({
     star.classList.add("star-beat");
   }
 
-
-  // ===== MASCOT CHAT =====
-  function showMascotChat(content) {
-    const chatBox = div.querySelector(".mascot-chat");
-    if (!chatBox) return;
-    chatBox.innerHTML = "";
-    chatBox.appendChild(content);
-  }
-
   // ================= DOOR =================
-  async function executeDoor(type) {
-    const door = div.querySelector(".door-layer");
-    if (!door) return;
+async function executeDoor(type) {
+  const door = div.querySelector(".door-layer");
+  if (!door) return;
 
-    let frame = type === "open" ? 1 : 10;
+  // 👉 nếu OPEN → đứng ở cửa đóng trước
+  if (type === "open") {
+    door.src = `/assets/mascots/door/1.png`;
 
-    return new Promise(resolve => {
-      const interval = setInterval(() => {
-        door.src = `/assets/mascots/door/${frame}.png`;
-
-        frame += (type === "open" ? 1 : -1);
-
-        // ===== OPEN =====
-        if (type === "open" && frame > 10) {
-          clearInterval(interval);
-
-          door.src = `/assets/mascots/door/10.png`;
-
-          resolve();
-        }
-
-        // ===== CLOSE =====
-        if (type === "close" && frame < 1) {
-          clearInterval(interval);
-
-          door.src = `/assets/mascots/door/1.png`;
-
-          resolve();
-        }
-
-      }, 60);
-    });
+    await new Promise(r => setTimeout(r, 500)); // ⏱ delay lúc bắt đầu
   }
+
+  let frame = type === "open" ? 1 : 10;
+
+  return new Promise(resolve => {
+    const interval = setInterval(() => {
+      door.src = `/assets/mascots/door/${frame}.png`;
+
+      frame += (type === "open" ? 1 : -1);
+
+      // ===== OPEN =====
+      if (type === "open" && frame > 10) {
+        clearInterval(interval);
+
+        door.src = `/assets/mascots/door/10.png`;
+
+        resolve();
+      }
+
+      // ===== CLOSE =====
+      if (type === "close" && frame < 1) {
+        clearInterval(interval);
+
+        door.src = `/assets/mascots/door/1.png`;
+
+        // 👉 giữ cửa đóng 1 lúc
+        setTimeout(() => {
+          resolve();
+        }, 500); // ⏱ delay lúc kết thúc
+      }
+
+    }, 60);
+  });
+}
+
   // ================= UTIL =================
   function updateStarProgress() {
     const starWrap = div.querySelector(".star-progress");
@@ -149,7 +150,7 @@ export default function ({
         const door = div.querySelector(".door-layer");
         if (door) door.style.display = "block";
 
-        // 👉 đóng cửa
+        // shut the door
         await executeDoor("close");
 
         const isLast = nextIndex >= allQuestions.length;
@@ -385,14 +386,12 @@ export default function ({
     div.querySelector(".setting-btn").onclick = () => {
       playSound("click");
 
-      // Nếu đang mở → đóng
       if (settingMenu) {
         settingMenu.remove();
         settingMenu = null;
         return;
       }
 
-      // ▶ Nếu đang đóng → mở
       settingMenu = SettingMenu({
         onClose: () => {
           settingMenu.remove();
@@ -552,6 +551,7 @@ export default function ({
         });
       }
     }
+
     //  OPEN DOOR khi vào màn
     requestAnimationFrame(() => {
       if (!isDoorOpened) {

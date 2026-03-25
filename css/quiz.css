@@ -41,7 +41,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  z-index: 25;
+  z-index: 1000;
 }
 
 .mascot-area.player {
@@ -51,8 +51,27 @@
 
 
 /* =========================
-   MASCOT CHAT - 2 BUBBLE RIÊNG BIỆT NHƯ TRONG HÌNH
+   MASCOT CHAT 
 ========================= */
+
+.mascot {
+  width: 320px;
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex: 0 0 auto;
+  align-self: flex-end;
+  position: absolute;
+}
+
+.mascot img {
+  max-width: 125%;
+  max-height: 125%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
 
 /* Container cho chat bubble */
 .mascot-chat {
@@ -90,6 +109,7 @@
     opacity: 0;
     transform: translateY(10px) scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -194,9 +214,11 @@
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-4px);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -347,9 +369,11 @@
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.2) rotate(3deg);
   }
+
   100% {
     transform: scale(1);
   }
@@ -367,15 +391,19 @@
   0% {
     transform: translateX(0);
   }
+
   25% {
     transform: translateX(-6px);
   }
+
   50% {
     transform: translateX(6px);
   }
+
   75% {
     transform: translateX(-6px);
   }
+
   100% {
     transform: translateX(0);
   }
@@ -406,7 +434,8 @@
 
 .toast-message {
   position: fixed;
-  bottom: 420px; /* trên đầu mascot */
+  bottom: 420px;
+  /* trên đầu mascot */
   left: 300px;
   transform: none;
 
@@ -425,9 +454,12 @@
   border: 3px solid;
 
   font-size: 16px;
-  min-width: 170px; /* rộng hơn */
-  max-width: 400px; /* giới hạn chiều ngang */
-  height: auto; /* không cao quá */
+  min-width: 170px;
+  /* rộng hơn */
+  max-width: 400px;
+  /* giới hạn chiều ngang */
+  height: auto;
+  /* không cao quá */
 
   opacity: 0;
   transition: all 0.3s ease;
@@ -441,7 +473,7 @@
 }
 
 /* đúng */
-.toast-message.correct.player{
+.toast-message.correct.player {
   color: #4caf50;
   background-color: #e8f5e9;
 }
@@ -512,7 +544,8 @@
 
 /* button chung */
 .setting-buttons button {
-  width: 140px; /* kích thước cố định */
+  width: 140px;
+  /* kích thước cố định */
   height: 140px;
   padding: 0;
   border: none;
@@ -522,18 +555,18 @@
 }
 
 .setting-buttons .btn-level {
-  background: url("../assets/images/decor/home-button.png") center / cover
-    no-repeat;
+  background: url("../assets/images/decor/home-button.png") center / cover no-repeat;
+
 }
 
 .setting-buttons .btn-replay {
-  background: url("../assets/images/decor/restart-button.png") center / cover
-    no-repeat;
+  background: url("../assets/images/decor/restart-button.png") center / cover no-repeat;
+      width: 100%;
+  height: 100%;
 }
 
 .setting-buttons .btn-close {
-  background: url("../assets/images/decor/continue-button.png") center / cover
-    no-repeat;
+  background: url("../assets/images/decor/continue-button.png") center / cover no-repeat;
 }
 
 .setting-menu button:hover {
@@ -567,6 +600,7 @@
     transform: scale(0.8);
     opacity: 0;
   }
+
   to {
     transform: scale(1);
     opacity: 1;
@@ -591,15 +625,19 @@
   0% {
     transform: scale(1);
   }
+
   25% {
     transform: scale(1.2);
   }
+
   50% {
     transform: scale(1);
   }
+
   75% {
     transform: scale(1.15);
   }
+
   100% {
     transform: scale(1);
   }
@@ -612,13 +650,19 @@
   transition: 0.4s ease;
 }
 
+
+/* ===== DOOR ===== */
 .door-layer {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
-  width: 520px;
-  height: auto;
-  z-index: 50; /* trên tất cả */
+  transform: translate(-50%, -50%) translateZ(0);
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  z-index: 1;
   pointer-events: none;
 }
+
