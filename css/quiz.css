@@ -49,6 +49,9 @@
   bottom: 20px;
 }
 
+.mascot.mascot-player {
+  z-index: 50;
+}
 
 /* =========================
    MASCOT CHAT 
@@ -72,7 +75,6 @@
   image-rendering: crisp-edges;
 }
 
-
 /* Container cho chat bubble */
 .mascot-chat {
   position: absolute;
@@ -80,7 +82,7 @@
   /* trên đầu mascot */
   left: 80px;
   max-width: 260px;
-  z-index: 10;
+  z-index: 50;
 }
 
 .mascot-chat .popup {
@@ -102,7 +104,6 @@
   border-style: solid;
   border-color: #fff transparent transparent;
 }
-
 
 @keyframes popIn {
   from {
@@ -555,18 +556,20 @@
 }
 
 .setting-buttons .btn-level {
-  background: url("../assets/images/decor/home-button.png") center / cover no-repeat;
-
+  background: url("../assets/images/decor/home-button.png") center / cover
+    no-repeat;
 }
 
 .setting-buttons .btn-replay {
-  background: url("../assets/images/decor/restart-button.png") center / cover no-repeat;
-      width: 100%;
+  background: url("../assets/images/decor/restart-button.png") center / cover
+    no-repeat;
+  width: 100%;
   height: 100%;
 }
 
 .setting-buttons .btn-close {
-  background: url("../assets/images/decor/continue-button.png") center / cover no-repeat;
+  background: url("../assets/images/decor/continue-button.png") center / cover
+    no-repeat;
 }
 
 .setting-menu button:hover {
@@ -606,7 +609,6 @@
     opacity: 1;
   }
 }
-
 
 .quiz-content {
   position: relative;
@@ -650,7 +652,6 @@
   transition: 0.4s ease;
 }
 
-
 /* ===== DOOR ===== */
 .door-layer {
   position: absolute;
@@ -662,7 +663,6 @@
   object-fit: contain;
   image-rendering: crisp-edges;
   image-rendering: pixelated;
-  z-index: 1;
+  z-index: 30;
   pointer-events: none;
 }
-
