@@ -12,6 +12,7 @@ export default function LoadingScene(allQuestions = null, startIndex = 0, level 
 
   const background = randomBackground();
   const loadingBg = "/assets/mascots/door/brown/1.png";
+  const LESSON_ID = params.get("lessonId");
 
   div.style.background = `
     linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
@@ -190,7 +191,7 @@ export default function LoadingScene(allQuestions = null, startIndex = 0, level 
     `;
 
     div.querySelector("#back").onclick = () =>
-      router.navigate(() => window.location.href = "https://www.lmo.edu.vn/student/lesson-detail/72");
+      window.location.href = "https://www.lmo.edu.vn/student/lesson-detail/" + LESSON_ID;
   }
 
   load();

@@ -32,7 +32,7 @@ export default function ({
   div.className = "quiz-scene";
   div.style.width = "1720px";
   div.style.height = "720px";
-
+  const LESSON_ID = params.get("lessonId");
 
   // ===== HEART & STAR EFFECT =====
   function applyHeartBeat() {
@@ -126,8 +126,9 @@ export default function ({
           onRestart: () => {
             gameState.reset();
             router.navigate(() => LoadingScene());
-          }, onGoLevel: () => {
-            window.location.href = "https://www.lmo.edu.vn/student/lesson-detail/72";
+          },
+          onGoLevel: () => {
+            window.location.href = "https://www.lmo.edu.vn/student/lesson-detail/" + LESSON_ID;
           },
         })
       );
@@ -387,7 +388,7 @@ export default function ({
           settingMenu = null;
         },
         onGoLevel: () => {
-          window.location.href = "https://www.lmo.edu.vn/student/lesson-detail/72";
+          window.location.href = "https://www.lmo.edu.vn/student/lesson-detail/" + LESSON_ID;
         },
         onReplay: () => {
           gameState.reset();
