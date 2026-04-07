@@ -11,10 +11,11 @@ export default function LoadingScene(allQuestions = null, startIndex = 0, level 
   div.style.height = "720px";
 
   const background = randomBackground();
+  const loadingBg = "/assets/mascots/door/brown/1.png";
 
   div.style.background = `
     linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
-    url("${background.bg}") center / cover no-repeat
+    url("${loadingBg}") center / cover no-repeat
   `;
 
   div.innerHTML = `

@@ -59,7 +59,7 @@ export default function ({
 
     // hold the door
     if (type === "open") {
-      door.src = `/assets/mascots/door/1.png`;
+      door.src = `/assets/mascots/door/brown/1.png`;
 
       await new Promise(r => setTimeout(r, 500)); // delay time 
     }
@@ -68,15 +68,15 @@ export default function ({
 
     return new Promise(resolve => {
       const interval = setInterval(() => {
-        door.src = `/assets/mascots/door/${frame}.png`;
+        door.src = `/assets/mascots/door/brown/${frame}.png`;
 
         frame += (type === "open" ? 1 : -1);
 
         // ===== OPEN =====
-        if (type === "open" && frame > 10) {
+        if (type === "open" && frame > 8) {
           clearInterval(interval);
 
-          door.src = `/assets/mascots/door/10.png`;
+          door.src = `/assets/mascots/door/brown/8.png`;
 
           resolve();
         }
@@ -85,7 +85,7 @@ export default function ({
         if (type === "close" && frame < 1) {
           clearInterval(interval);
 
-          door.src = `/assets/mascots/door/1.png`;
+          door.src = `/assets/mascots/door/brown/1.png`;
 
           setTimeout(() => {
             resolve();
@@ -317,8 +317,8 @@ export default function ({
       door = document.createElement("img");
       door.className = "door-layer";
       door.src = isDoorOpened
-        ? `/assets/mascots/door/10.png`
-        : `/assets/mascots/door/1.png`;
+        ? `/assets/mascots/door/brown/8.png`
+        : `/assets/mascots/door/brown/1.png`;
 
       div.appendChild(door);
     }
@@ -359,21 +359,11 @@ export default function ({
         role: "player",
       });
 
-      mascotInstance.el.style.transform = "translateX(-200px)";
+      mascotInstance.el.style.transform = "translateX(50px)";
     }
 
     if (mascotInstance && !playerArea.contains(mascotInstance.el)) {
       playerArea.appendChild(mascotInstance.el);
-    }
-
-    if (currentQuestionIndex === 0 && correctProgress === 0) {
-      requestAnimationFrame(() => {
-        mascotInstance.run({
-          from: -200,
-          to: 0,
-          duration: 1200,
-        });
-      });
     }
 
 
