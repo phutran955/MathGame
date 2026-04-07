@@ -32,6 +32,7 @@ export default function ({
   div.className = "quiz-scene";
   div.style.width = "1720px";
   div.style.height = "720px";
+  const params = new URLSearchParams(window.location.search);
   const LESSON_ID = params.get("lessonId");
 
   // ===== HEART & STAR EFFECT =====

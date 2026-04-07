@@ -12,6 +12,7 @@ export default function LoadingScene(allQuestions = null, startIndex = 0, level 
 
   const background = randomBackground();
   const loadingBg = "/assets/mascots/door/brown/1.png";
+  const params = new URLSearchParams(window.location.search);
   const LESSON_ID = params.get("lessonId");
 
   div.style.background = `
