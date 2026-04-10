@@ -20,7 +20,7 @@ export default function ResultPopup({
 
   const title = isWin ? "🎉 Chúc mừng bạn!" : "💀 Bạn đã thua!";
   const message = isWin
-    ? `Chúc mừng bạn đã hoàn thành trò chơi`
+    ? `Chúc mừng bạn`
     : `Huhu bạn thua rồi`;
 
   const mascotName = "cat";
