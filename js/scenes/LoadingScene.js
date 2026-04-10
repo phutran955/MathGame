@@ -60,7 +60,6 @@ export default function LoadingScene(allQuestions = null, startIndex = 0, level 
         "/assets/images/levels/level1bg.jpg",
         "/assets/images/levels/level2bg.jpg",
         "/assets/images/levels/level3bg.jpg",
-        "/assets/images/levels/level4bg.jpg",
         "/assets/images/decor/unmute-button.png",
         "/assets/images/decor/mute-button.png",
         "/assets/images/decor/continue-button.png",

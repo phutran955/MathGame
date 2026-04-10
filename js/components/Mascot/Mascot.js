@@ -44,6 +44,7 @@ export default function Mascot({
         img,
         path: `/assets/mascots/${mascotName}/happy`,
         loop: false,
+        totalFrames: 8,
         onEnd: () => {
           idle();
           resolve();
@@ -131,7 +132,7 @@ export default function Mascot({
         img,
         path: `/assets/mascots/${mascotName}/openDoor`,
         loop: false,
-        totalFrames: 10,
+        totalFrames: 8,
         onEnd: () => {
           // giữ frame cuối (frame 10)
           img.src = `/assets/mascots/${mascotName}/openDoor/10.png`;
@@ -146,7 +147,7 @@ export default function Mascot({
       stopCurrent();
       currentState = "closeDoor";
 
-      let frame = 10;
+      let frame = 8;
 
       const interval = setInterval(() => {
         img.src = `/assets/mascots/${mascotName}/openDoor/${frame}.png`;

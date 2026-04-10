@@ -65,7 +65,7 @@ export default function ({
       await new Promise(r => setTimeout(r, 500)); // delay time 
     }
 
-    let frame = type === "open" ? 1 : 10;
+    let frame = type === "open" ? 1 : 8;
 
     return new Promise(resolve => {
       const interval = setInterval(() => {
@@ -168,6 +168,9 @@ export default function ({
               onRestart: () => {
                 gameState.reset();
                 router.navigate(() => LoadingScene());
+              },
+              onGoLevel: () => {
+                window.location.href = "https://www.lmo.edu.vn/student/lesson-detail/" + LESSON_ID;
               },
             })
           );
@@ -344,6 +347,8 @@ export default function ({
         musicIcon.src = "../assets/images/decor/mute-button.png";
       }
     }
+
+    updateMusicIcon();
 
     musicBtn.onclick = () => {
       toggleBackgroundMusic();
