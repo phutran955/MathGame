@@ -61,15 +61,11 @@ export default function LoadingScene(allQuestions = null, startIndex = 0, level 
         "/assets/images/levels/level2bg.jpg",
         "/assets/images/levels/level3bg.jpg",
         "/assets/images/levels/level4bg.jpg",
-        "/assets/images/decor/autumnleaf.png",
         "/assets/images/decor/unmute-button.png",
         "/assets/images/decor/mute-button.png",
         "/assets/images/decor/continue-button.png",
-        "/assets/images/decor/embers.png",
         "/assets/images/decor/home-button.png",
-        "/assets/images/decor/leaf.png",
         "/assets/images/decor/menu_BG.png",
-        "/assets/images/decor/rain.png",
         "/assets/images/decor/restart-button.png",
         "/assets/images/decor/Result_BG_2.png",
         "/assets/images/tops/heart.png",
@@ -132,11 +128,8 @@ export default function LoadingScene(allQuestions = null, startIndex = 0, level 
   }
 
   const ANIM_COUNTS = {
-    attack: 13,
-    dead: 10,
-    happy: 10,
+    happy: 8,
     idle: 10,
-    run: 8,
     sad: 10
   };
 

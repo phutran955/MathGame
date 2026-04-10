@@ -452,7 +452,7 @@ export default function ({
 
             Messages({
               type: "wrong",
-              message: "Huhu sai rồi",
+              message: q.detailedText,
               target: "player",
             });
 
@@ -525,7 +525,7 @@ export default function ({
 
             Messages({
               type: "wrong",
-              message: "Huhu sai rồi",
+              message: q.detailedText,
               target: "player",
             });
 
